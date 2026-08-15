@@ -140,16 +140,15 @@ export default function HomeContent() {
         <section id="story" className="section bg-paper-2">
           <div className="shell grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             <Reveal as="figure" className="order-2 lg:order-1">
-              <div className="frame" style={{ aspectRatio: "4 / 5" }}>
-                <span className="frame-note">
-                  <Aperture className="w-6 h-6 text-gold" />
-                  <span className="label" style={{ fontSize: "0.62rem" }}>
-                    {t.story.figure}
-                  </span>
-                  <span className="text-taupe" style={{ fontSize: "0.72rem" }}>
-                    {t.story.photoAdd}
-                  </span>
-                </span>
+              <div className="frame" style={{ aspectRatio: "2 / 3" }}>
+                {/* Cropped to 2:3 by scripts/optimize-gallery.mjs to match this frame. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/gallery/story-us-together.webp"
+                  alt={t.story.figure}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             </Reveal>
             <Reveal className="order-1 lg:order-2" delay={80}>

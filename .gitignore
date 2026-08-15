@@ -42,6 +42,10 @@ yarn-error.log*
 # large media — hosted externally (Supabase Storage), not committed/deployed
 /public/film/*.mp4
 
+# camera originals for the gallery (7000px, 10–27 MB each). Only the web-sized
+# exports in /public/gallery ship; regenerate with scripts/optimize-gallery.mjs
+/public/images/
+
 # vercel
 .vercel
 

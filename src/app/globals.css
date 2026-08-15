@@ -223,31 +223,33 @@ body {
   color: var(--taupe);
 }
 
-/* Gallery wall — a curated mosaic of 8 frames that tiles a clean rectangle
-   (no holes, even edges) with two larger feature frames. Designed for exactly
-   8 photos; to add/remove, adjust the areas below. */
+/* Gallery wall — an orientation-aware mosaic: a portrait frame takes one
+   column (3:4), a landscape frame two (3:2), so both come out the same height
+   and the rows tile a clean rectangle. `dense` packing keeps the edges even if
+   the photo order ever changes; the set in lib/photos.ts already fits exactly
+   (4 columns on desktop, 2 on phones). */
 .gallery-wall {
   display: grid;
   gap: 0.75rem;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(5, clamp(7rem, 32vw, 11rem));
-  grid-template-areas:
-    "p1 p1"
-    "p2 p3"
-    "p4 p5"
-    "p6 p6"
-    "p7 p8";
+  grid-auto-flow: row dense;
+}
+.gallery-wall .frame {
+  /* The ratio sets the row height; width/height 100% then makes every frame in
+     a row flush, since a portrait and a double-width landscape land a few
+     pixels apart (the gap sits inside the wide frame). */
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  height: 100%;
+}
+.gallery-wall .frame-wide {
+  grid-column: span 2;
+  aspect-ratio: 3 / 2;
 }
 @media (min-width: 768px) {
   .gallery-wall {
     gap: 1.1rem;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, clamp(9rem, 14vw, 16rem));
-    grid-template-areas:
-      "p1 p1 p2 p3"
-      "p1 p1 p4 p4"
-      "p5 p6 p7 p7"
-      "p8 p8 p7 p7";
   }
 }
 
