@@ -77,9 +77,11 @@ Editor. There is no server and no `/admin` page — nothing to host or secure.
 (`.github/workflows/deploy.yml`) builds and deploys on every push to `main`.
 
 1. In the repo: **Settings → Pages → Source = GitHub Actions**.
-2. **Settings → Secrets and variables → Actions** — add the four
-   `NEXT_PUBLIC_*` secrets (Supabase URL, anon key, film URL, site URL) and,
-   for a project-page repo, a `NEXT_PUBLIC_BASE_PATH` **variable** = `/repo-name`.
+2. **Settings → Secrets and variables → Actions** — add the Supabase secrets
+   (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`) and
+   `NEXT_PUBLIC_FILM_URL`. `NEXT_PUBLIC_SITE_URL` is optional (defaults to
+   `https://wellon0314vivian.com`). For a project-page repo, add a
+   `NEXT_PUBLIC_BASE_PATH` **variable** = `/repo-name`.
 3. Push to `main`. For a custom domain, add a `public/CNAME` file with the
    domain and configure DNS.
 

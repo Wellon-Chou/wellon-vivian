@@ -32,6 +32,9 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# ...but DO commit the public production config (all NEXT_PUBLIC_, RLS-protected)
+# so the GitHub Pages build has Supabase + film URLs.
+!.env.production
 
 # guest submissions (RSVPs & messages) — private data, never commit
 /data

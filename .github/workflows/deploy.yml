@@ -28,18 +28,10 @@ jobs:
 
       - run: npm ci
 
+      # Build config comes from the committed .env.production (all public,
+      # NEXT_PUBLIC_ values). No repo secrets needed.
       - name: Build static site
         run: npm run build
-        env:
-          # Public config, injected at build time (static export inlines these).
-          # Set these under repo Settings → Secrets and variables → Actions.
-          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
-          NEXT_PUBLIC_FILM_URL: ${{ secrets.NEXT_PUBLIC_FILM_URL }}
-          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
-          # Not secret — use a repo Variable. Empty for custom domain / user-site,
-          # "/repo-name" for a project-page repo.
-          NEXT_PUBLIC_BASE_PATH: ${{ vars.NEXT_PUBLIC_BASE_PATH }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

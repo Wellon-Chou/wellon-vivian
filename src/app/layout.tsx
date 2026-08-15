@@ -18,7 +18,7 @@ const garamond = EB_Garamond({
   display: "swap",
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://wellon-and-vivian.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://wellon0314vivian.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
