@@ -1,0 +1,505 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   Wellon & Vivian — Editorial & Timeless design system
+   Ivory paper ↔ warm ink, antique gold hairlines. Bodoni display + Garamond.
+   ========================================================================= */
+
+:root {
+  /* Ground */
+  --paper: #f6f0e4; /* warm ivory */
+  --paper-2: #ebdec4; /* deeper ivory — perceptible alternating band */
+  --paper-3: #e4d6ba; /* framed slots / inset */
+
+  /* Ink */
+  --ink: #17120b; /* warm near-black */
+  --ink-800: #241d14;
+  --ink-soft: #433a2c; /* body on paper */
+  --taupe: #736550; /* secondary text on paper */
+  --taupe-2: #8c7d64;
+
+  /* Metal */
+  --gold: #9a7b3f; /* antique gold — hairlines, marks */
+  --gold-bright: #c2a25e; /* on ink */
+
+  /* Lines */
+  --line: rgba(23, 18, 11, 0.16);
+  --line-soft: rgba(23, 18, 11, 0.09);
+  --line-gold: rgba(154, 123, 63, 0.55);
+
+  /* On-ink foreground */
+  --on-ink: #f0e8d8;
+  --on-ink-soft: #c8bca4;
+  --on-ink-line: rgba(240, 232, 216, 0.16);
+
+  --shadow-soft: 0 24px 60px -30px rgba(23, 18, 11, 0.55);
+  --shadow-frame: 0 40px 90px -50px rgba(23, 18, 11, 0.7);
+
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-taupe: var(--taupe);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-on-ink: var(--on-ink);
+
+  --font-display: var(--font-bodoni), Georgia, "Times New Roman", serif;
+  --font-serif: var(--font-garamond), Georgia, serif;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  letter-spacing: 0.003em;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ---- Typography primitives ---------------------------------------------- */
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.display {
+  font-family: var(--font-display);
+  color: var(--ink);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
+.display-italic {
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Tracked small-caps label — used ONLY as standalone metadata (dates,
+   navigation, field labels), never as an eyebrow stacked above a heading. */
+.label {
+  font-family: var(--font-serif);
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--taupe);
+}
+
+.label-gold {
+  color: var(--gold);
+}
+
+.lede {
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.5rem);
+  line-height: 1.62;
+  color: var(--ink-soft);
+}
+
+.prose-measure {
+  max-width: 58ch;
+}
+
+/* ---- Rules & marks ------------------------------------------------------ */
+
+.rule {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+}
+
+.rule-gold {
+  height: 1px;
+  background: var(--line-gold);
+  border: 0;
+}
+
+/* A slender diamond mark drawn from a rotated square — the couple's motif. */
+.mark {
+  width: 7px;
+  height: 7px;
+  transform: rotate(45deg);
+  background: var(--gold);
+  display: inline-block;
+}
+
+.mark-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.15rem;
+  color: var(--gold);
+}
+.mark-line::before,
+.mark-line::after {
+  content: "";
+  height: 1px;
+  width: clamp(2.5rem, 12vw, 7rem);
+  background: var(--line-gold);
+}
+
+/* ---- Layout helpers ----------------------------------------------------- */
+
+.shell {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 4rem);
+}
+
+.shell-narrow {
+  width: 100%;
+  max-width: 52rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 4rem);
+}
+
+.section {
+  padding-block: clamp(4.5rem, 10vw, 9rem);
+}
+
+.on-ink {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+.on-ink .display {
+  color: var(--on-ink);
+}
+.on-ink .label {
+  color: var(--on-ink-soft);
+}
+.on-ink .lede {
+  color: var(--on-ink-soft);
+}
+
+/* ---- Media frames (placeholders for the couple's real photos) ---------- */
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(150deg, var(--paper-3), var(--paper-2));
+  border: 1px solid var(--line-soft);
+}
+.frame img,
+.frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.frame-note {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--taupe);
+}
+
+/* Gallery wall — a curated mosaic of 8 frames that tiles a clean rectangle
+   (no holes, even edges) with two larger feature frames. Designed for exactly
+   8 photos; to add/remove, adjust the areas below. */
+.gallery-wall {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, clamp(7rem, 32vw, 11rem));
+  grid-template-areas:
+    "p1 p1"
+    "p2 p3"
+    "p4 p5"
+    "p6 p6"
+    "p7 p8";
+}
+@media (min-width: 768px) {
+  .gallery-wall {
+    gap: 1.1rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, clamp(9rem, 14vw, 16rem));
+    grid-template-areas:
+      "p1 p1 p2 p3"
+      "p1 p1 p4 p4"
+      "p5 p6 p7 p7"
+      "p8 p8 p7 p7";
+  }
+}
+
+/* ---- Buttons ------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-serif);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 1.05rem 2.1rem;
+  border: 1px solid var(--ink);
+  color: var(--paper);
+  background: var(--ink);
+  cursor: pointer;
+  transition: background 0.5s var(--ease-editorial),
+    color 0.5s var(--ease-editorial), transform 0.5s var(--ease-editorial);
+}
+.btn:hover {
+  background: transparent;
+  color: var(--ink);
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+}
+.btn-ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.on-ink .btn {
+  border-color: var(--on-ink);
+  background: var(--on-ink);
+  color: var(--ink);
+}
+.on-ink .btn:hover {
+  background: transparent;
+  color: var(--on-ink);
+}
+
+.link-underline {
+  position: relative;
+  color: var(--ink);
+  text-decoration: none;
+  padding-bottom: 2px;
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 0.5s var(--ease-editorial);
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+/* ---- Form fields -------------------------------------------------------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.field > input,
+.field > textarea,
+.field > select {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 0.65rem 0.1rem;
+  transition: border-color 0.4s var(--ease-editorial);
+  border-radius: 0;
+}
+.field > textarea {
+  resize: vertical;
+  min-height: 6.5rem;
+  line-height: 1.6;
+}
+.field > input::placeholder,
+.field > textarea::placeholder {
+  color: var(--taupe-2);
+}
+.field > input:focus,
+.field > textarea:focus,
+.field > select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.field > input:focus-visible,
+.field > textarea:focus-visible,
+.field > select:focus-visible {
+  outline: none;
+}
+
+.on-ink .field > input,
+.on-ink .field > textarea,
+.on-ink .field > select {
+  color: var(--on-ink);
+  border-bottom-color: var(--on-ink-line);
+}
+.on-ink .field > input:focus,
+.on-ink .field > textarea:focus,
+.on-ink .field > select:focus {
+  border-color: var(--gold-bright);
+}
+.on-ink .field > select option {
+  color: #17120b;
+}
+
+/* Segmented attending choice (radio pills, no stock control) */
+.choice {
+  cursor: pointer;
+}
+.choice input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.choice > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--on-ink-line);
+  font-family: var(--font-serif);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--on-ink-soft);
+  transition: all 0.4s var(--ease-editorial);
+}
+.choice input:checked + span {
+  border-color: var(--gold-bright);
+  color: var(--on-ink);
+  background: rgba(194, 162, 94, 0.12);
+}
+.choice input:focus-visible + span {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 2px;
+}
+
+.field-error {
+  color: #b4553c;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+.on-ink .field-error {
+  color: #e0a184;
+}
+
+/* ---- Scroll reveal ------------------------------------------------------ */
+
+/* Visible by default — content is never lost if scripting is off or the
+   browser lacks the `scripting` media feature. The animation arms purely in
+   CSS only when scripting is enabled (no inline script, no hydration risk). */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+@media (scripting: enabled) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+    transition: opacity 1.1s var(--ease-editorial),
+      transform 1.1s var(--ease-editorial), filter 1.1s var(--ease-editorial);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
+/* ---- Header ------------------------------------------------------------- */
+
+.site-header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 50;
+  transition: background 0.6s var(--ease-editorial),
+    border-color 0.6s var(--ease-editorial), color 0.6s var(--ease-editorial);
+  border-bottom: 1px solid transparent;
+}
+.site-header[data-solid="true"] {
+  /* Solid paper so the logo/nav stay readable over any section (incl. the
+     dark bands). A translucent color-mix silently failed on some engines. */
+  background: var(--paper);
+  border-bottom-color: var(--line-soft);
+  box-shadow: 0 10px 30px -24px rgba(23, 18, 11, 0.5);
+}
+
+/* Scroll cue — a slow, smooth drift (never a bounce). */
+@keyframes cue-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(7px);
+    opacity: 1;
+  }
+}
+.scroll-cue {
+  animation: cue-drift 2.6s var(--ease-editorial) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue {
+    animation: none;
+  }
+}
+
+/* Utility */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
