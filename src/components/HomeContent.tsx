@@ -5,12 +5,11 @@ import SiteHeader from "@/components/SiteHeader";
 import Reveal from "@/components/Reveal";
 import Gallery from "@/components/Gallery";
 import FilmPlayer from "@/components/FilmPlayer";
-import RsvpForm from "@/components/RsvpForm";
 import Guestbook from "@/components/Guestbook";
 import Countdown from "@/components/Countdown";
 import AddToCalendar from "@/components/AddToCalendar";
 import { Aperture, ArrowDown, Calendar, Diamond, External, Pin, Play } from "@/components/icons";
-import { EVENT } from "@/lib/constants";
+import { EVENT, RSVP_URL } from "@/lib/constants";
 import { useLang } from "./LanguageProvider";
 
 export default function HomeContent() {
@@ -98,6 +97,25 @@ export default function HomeContent() {
           </a>
         </section>
 
+        {/* FILM */}
+        <section id="film" className="section on-ink">
+          <div className="shell">
+            <Reveal className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+              <span className="inline-flex text-gold mb-6">
+                <Play className="w-7 h-7" />
+              </span>
+              <h2 className="display text-4xl md:text-6xl" style={{ color: "var(--on-ink)" }}>
+                {t.film.headingLead}
+                <span className="display-italic text-gold-bright">{t.film.headingAccent}</span>
+              </h2>
+              <p className="lede mt-6">{t.film.intro}</p>
+            </Reveal>
+            <Reveal delay={100} className="max-w-5xl mx-auto">
+              <FilmPlayer src={process.env.NEXT_PUBLIC_FILM_URL} />
+            </Reveal>
+          </div>
+        </section>
+
         {/* INVITATION */}
         <section id="invitation" className="section bg-paper-2">
           <div className="shell-narrow text-center">
@@ -181,25 +199,6 @@ export default function HomeContent() {
           </div>
         </section>
 
-        {/* FILM */}
-        <section id="film" className="section on-ink">
-          <div className="shell">
-            <Reveal className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-              <span className="inline-flex text-gold mb-6">
-                <Play className="w-7 h-7" />
-              </span>
-              <h2 className="display text-4xl md:text-6xl" style={{ color: "var(--on-ink)" }}>
-                {t.film.headingLead}
-                <span className="display-italic text-gold-bright">{t.film.headingAccent}</span>
-              </h2>
-              <p className="lede mt-6">{t.film.intro}</p>
-            </Reveal>
-            <Reveal delay={100} className="max-w-5xl mx-auto">
-              <FilmPlayer src={process.env.NEXT_PUBLIC_FILM_URL} />
-            </Reveal>
-          </div>
-        </section>
-
         {/* DETAILS */}
         <section id="details" className="section bg-paper-2">
           <div className="shell">
@@ -252,17 +251,41 @@ export default function HomeContent() {
         {/* RSVP */}
         <section id="rsvp" className="section on-ink">
           <div className="shell">
-            <Reveal className="text-center max-w-2xl mx-auto mb-14">
-              <h2 className="display text-4xl md:text-6xl" style={{ color: "var(--on-ink)" }}>
-                {t.rsvp.headingLead}
-                <span className="display-italic text-gold-bright">{t.rsvp.headingAccent}</span>
-                {t.rsvp.headingTail}
-              </h2>
-              <p className="lede mt-6">{t.rsvp.intro}</p>
-            </Reveal>
-            <Reveal delay={120}>
-              <RsvpForm />
-            </Reveal>
+            {/* The save-the-date print carries the date and venue, so the copy
+                beside it stays short: invitation, then the one call to action. */}
+            <div className="grid lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1fr)] gap-14 lg:gap-20 items-center">
+              <Reveal className="w-full max-w-[21rem] mx-auto lg:max-w-none">
+                <figure className="poster">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/poster/our-wedding.webp"
+                    width={596}
+                    height={843}
+                    alt={t.rsvp.posterAlt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </Reveal>
+
+              <Reveal delay={120} className="text-center lg:text-left">
+                <h2 className="display text-4xl md:text-5xl" style={{ color: "var(--on-ink)" }}>
+                  {t.rsvp.headingLead}
+                  <span className="display-italic text-gold-bright">{t.rsvp.headingAccent}</span>
+                  {t.rsvp.headingTail}
+                </h2>
+                <p className="lede mt-6 prose-measure mx-auto lg:mx-0">{t.rsvp.intro}</p>
+                <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-4">
+                  <a href={RSVP_URL} target="_blank" rel="noopener noreferrer" className="btn">
+                    {t.rsvp.open}
+                    <External className="w-3.5 h-3.5" />
+                  </a>
+                  <p className="text-[var(--on-ink-soft)]" style={{ fontSize: "0.85rem" }}>
+                    {t.rsvp.respondBy}
+                  </p>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </section>
 
@@ -299,10 +322,7 @@ export default function HomeContent() {
             ))}
           </div>
           <p className="mt-10 text-[var(--on-ink-soft)]" style={{ fontSize: "0.72rem", opacity: 0.7 }}>
-            {t.footer.made} ·{" "}
-            <a href="/admin" className="link-underline" style={{ color: "var(--on-ink-soft)" }}>
-              {t.footer.forCouple}
-            </a>
+            {t.footer.made}
           </p>
         </div>
       </footer>

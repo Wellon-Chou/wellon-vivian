@@ -253,6 +253,34 @@ body {
   }
 }
 
+/* ---- Poster mount ------------------------------------------------------ */
+
+/* The save-the-date print on the dark RSVP band, presented as a mounted photo:
+   a warm gold-tinted mount, a gold hairline outside it and an ivory hairline
+   where the mount meets the print. No shadow — it would be invisible on ink. */
+.poster {
+  position: relative;
+  padding: clamp(0.55rem, 1.3vw, 0.95rem);
+  background: linear-gradient(
+    150deg,
+    rgba(194, 162, 94, 0.16),
+    rgba(240, 232, 216, 0.04)
+  );
+  border: 1px solid var(--line-gold);
+}
+.poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.poster::after {
+  content: "";
+  position: absolute;
+  inset: clamp(0.55rem, 1.3vw, 0.95rem);
+  border: 1px solid rgba(240, 232, 216, 0.18);
+  pointer-events: none;
+}
+
 /* ---- Buttons ------------------------------------------------------------ */
 
 .btn {
@@ -371,40 +399,6 @@ body {
 }
 .on-ink .field > select option {
   color: #17120b;
-}
-
-/* Segmented attending choice (radio pills, no stock control) */
-.choice {
-  cursor: pointer;
-}
-.choice input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-.choice > span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 1rem 1.25rem;
-  border: 1px solid var(--on-ink-line);
-  font-family: var(--font-serif);
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.74rem;
-  font-weight: 600;
-  color: var(--on-ink-soft);
-  transition: all 0.4s var(--ease-editorial);
-}
-.choice input:checked + span {
-  border-color: var(--gold-bright);
-  color: var(--on-ink);
-  background: rgba(194, 162, 94, 0.12);
-}
-.choice input:focus-visible + span {
-  outline: 2px solid var(--gold-bright);
-  outline-offset: 2px;
 }
 
 .field-error {

@@ -1,9 +1,10 @@
 # Wellon &amp; Vivian — Wedding Website
 
-An editorial, single-page wedding site: photo gallery, wedding film, RSVP
-collection, and a guestbook. Built with Next.js 16 (App Router), React 19,
+An editorial, single-page wedding site: photo gallery, wedding film, RSVP link,
+and a guestbook. Built with Next.js 16 (App Router), React 19,
 Tailwind CSS v4, and TypeScript. Ships as a **static export** — hostable free on
-GitHub Pages — with RSVPs and guest messages saved to **Supabase**.
+GitHub Pages — with guest messages saved to **Supabase** and RSVPs collected by
+an external form service.
 
 ## Quick start
 
@@ -30,8 +31,10 @@ them at build time):
 | `NEXT_PUBLIC_BASE_PATH` | Empty for a custom domain / user-site; `/repo-name` for a project repo. |
 
 First-time setup: run `supabase/schema.sql` once in the Supabase dashboard →
-SQL Editor to create the `rsvps` and `messages` tables with the right access
-rules.
+SQL Editor to create the `messages` table with the right access rules.
+
+The RSVP button links to an external form — change the destination by editing
+`RSVP_URL` in `src/lib/constants.ts`.
 
 ## Making it yours
 
@@ -63,13 +66,16 @@ guest's saved choice on load.
 
 ## Where the data goes
 
-RSVPs and guestbook messages are written **directly from the guest's browser to
-Supabase** (`src/components/RsvpForm.tsx` and `Guestbook.tsx` via
-`src/lib/supabase.ts`). Row-Level Security (`supabase/schema.sql`) lets anyone
-*submit*, keeps RSVPs private, and lets the guestbook wall be read publicly.
+Guestbook messages are written **directly from the guest's browser to Supabase**
+(`src/components/Guestbook.tsx` via `src/lib/supabase.ts`). Row-Level Security
+(`supabase/schema.sql`) lets anyone *submit* and lets the guestbook wall be read
+publicly. You read and **export** them (CSV) in the Supabase dashboard → Table
+Editor.
 
-You read and **export** everything (CSV) in the Supabase dashboard → Table
-Editor. There is no server and no `/admin` page — nothing to host or secure.
+RSVPs go to the external form at `RSVP_URL` (`src/lib/constants.ts`) and are read
+in that service's own dashboard — this site neither validates nor stores them.
+
+There is no server and no `/admin` page — nothing to host or secure.
 
 ## Deploying to GitHub Pages
 

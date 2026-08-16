@@ -1,6 +1,7 @@
 /** Shared, non-secret constants used by both server and client code. */
 
-export const MEALS = ["Standard", "Vegetarian", "Vegan", "Halal", "No preference"] as const;
+/* RSVPs are collected by an external form service; the site just links out. */
+export const RSVP_URL = "https://rcaj0gh6.jsjform.com/f/mR3J7u";
 
 /* Event facts — edit here in one place.
    The date is confirmed; time and venue are still "To be announced". */
