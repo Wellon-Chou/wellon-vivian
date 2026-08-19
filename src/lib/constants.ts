@@ -27,8 +27,8 @@ export const EVENT = {
   // --- Not yet finalized (clearly-marked placeholder) ---
   timeLabel: "Time to be announced",
   timeLabelZh: "时间待定",
-  dressCode: "Formal / Garden Elegant",
-  dressCodeZh: "正式着装 / 花园优雅风",
+  dressCode: "Formal / Garden Elegance",
+  dressCodeZh: "正式着装 / 花园优雅风格",
 
   // Optional start time in 24h "HH:MM" (venue-local). Empty = treat as an
   // all-day event for the calendar and count down to the start of the day.

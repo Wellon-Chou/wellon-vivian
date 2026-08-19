@@ -70,7 +70,7 @@ const en = {
   film: {
     headingLead: "The ",
     headingAccent: "film",
-    intro: "For everyone who couldn’t be there — and for us, to relive again and again. Press play.",
+    intro: "For everyone who couldn’t be there — and for us, to relive these moments again and again. Press play.",
     play: "Play the film",
     filmAdd: "Film to be added",
   },
@@ -89,10 +89,10 @@ const en = {
     saveTheDate: "Save the date",
   },
   rsvp: {
-    headingLead: "Will you ",
-    headingAccent: "celebrate",
-    headingTail: " with us?",
-    intro: "Your presence would mean the world. Kindly let us know using the form below.",
+    headingLead: "Will You ",
+    headingAccent: "Join Us",
+    headingTail: " on This Special Day?",
+    intro: "Your presence means so much to us. Please let us know by completing the RSVP form below.",
     open: "Open the RSVP form",
     respondBy: "Kindly respond by the date on your invitation.",
     posterAlt:
@@ -139,7 +139,7 @@ const zh: typeof en = {
     scroll: "向下滑动",
   },
   invitation: {
-    lead: "我们两家人诚挚地邀请您，共同分享我们婚礼当天的喜悦——",
+    lead: "我们两家人诚挚地邀请您，与我们共同分享婚礼当天的喜悦——",
     accent: "这是一场关于爱、也关于每一位成就了这份爱的人的庆典。",
   },
   countdown: {
@@ -156,7 +156,7 @@ const zh: typeof en = {
     headingLead: "我们的",
     headingAccent: "故事",
     figure: "我们，在一起",
-    p1: "每一段爱情都很美，而我们的这一段，是我们最珍爱的。两条原本各自延伸的路，在一个个安静的夜晚、共享的欢笑，和上千个微小的瞬间里，慢慢汇成同一条——通向永远。",
+    p1: "每一段爱情都很美，而我们的这一段，是我们最珍爱的故事。两条原本各自延伸的路，在一个个安静的夜晚、共享的欢笑，和上千个微小的瞬间里，慢慢汇成同一条——通向永远。",
     p2: "最精彩的篇章，我们仍在续写。但在所有的选择之中，选择彼此，始终最像是回家。",
     quote: "「于是，我们对余生，说了『我愿意』。」",
   },
@@ -184,14 +184,14 @@ const zh: typeof en = {
   film: {
     headingLead: "",
     headingAccent: "婚礼影片",
-    intro: "献给无法到场的每一位，也献给我们自己，好一遍遍重温。请按下播放。",
+    intro: "献给无法到场的每一位，也献给我们自己，好让我们一遍遍重温。请按下播放。",
     play: "播放影片",
     filmAdd: "影片待上传",
   },
   details: {
     headingLead: "",
     headingAccent: "婚礼详情",
-    intro: "以下是主要信息，完整详情将随正式请柬一同奉上。",
+    intro: "以下为婚礼主要信息，完整详情将随正式请柬一同奉上。",
     when: "日期",
     where: "地点",
     dress: "着装要求",

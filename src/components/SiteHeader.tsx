@@ -10,10 +10,13 @@ export default function SiteHeader() {
   const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
 
+  /* Listed in the order the sections appear down the page (film, story,
+     gallery, details, guestbook). RSVP is the trailing call to action rather
+     than a nav item, so it keeps its place at the end of the bar. */
   const links = [
+    { href: "#film", label: t.nav.film },
     { href: "#story", label: t.nav.story },
     { href: "#gallery", label: t.nav.gallery },
-    { href: "#film", label: t.nav.film },
     { href: "#details", label: t.nav.details },
     { href: "#guestbook", label: t.nav.guestbook },
   ];

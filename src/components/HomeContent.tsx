@@ -73,9 +73,6 @@ export default function HomeContent() {
         <section className="relative min-h-[100svh] flex flex-col items-center justify-center text-center overflow-hidden">
           <Diamond className="pointer-events-none absolute text-gold opacity-[0.06] w-[70vmin] h-[70vmin]" aria-hidden />
           <div className="shell relative pt-24 pb-16">
-            <div className="mark-line mb-10">
-              <span className="label label-gold">{city}</span>
-            </div>
             <h1 className="display leading-[0.92]" style={{ fontSize: "clamp(3.6rem, 15vw, 11rem)" }}>
               <span className="block">Wellon</span>
               <span className="display-italic block text-gold my-1 md:my-2" style={{ fontSize: "0.62em" }}>
