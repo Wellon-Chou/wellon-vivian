@@ -9,7 +9,7 @@ export default function LanguageToggle({ className = "" }: { className?: string 
 
   return (
     <div
-      className={`inline-flex items-center ${className}`}
+      className={`inline-flex items-center shrink-0 whitespace-nowrap ${className}`}
       role="group"
       aria-label="Language"
       style={{ border: "1px solid var(--line)", borderRadius: "999px" }}

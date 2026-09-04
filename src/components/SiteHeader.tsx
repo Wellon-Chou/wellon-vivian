@@ -38,23 +38,33 @@ export default function SiteHeader() {
   return (
     <header className="site-header" data-solid={solid || open}>
       <div className="shell flex items-center justify-between h-16 md:h-20">
-        <a href="#top" className="font-display text-ink text-lg md:text-xl tracking-tight" style={{ letterSpacing: "0.02em" }}>
-          W <span className="italic text-gold">&amp;</span> V
+        <a href="#top" className="flex items-center shrink-0" aria-label="Wellon & Vivian — back to top">
+          {/* Monogram: transparent PNG exported at 3x for retina; the height
+              tracks the bar (h-16 / h-20) with breathing room above and below. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo/wv-monogram.png" alt="W & V" className="h-10 md:h-12 w-auto" width={224} height={192} />
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Full nav only from lg — the tracked labels need ~900px of room
+            before they stop wrapping, so tablets get the drawer instead. */}
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 ml-8">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="label link-underline" style={{ fontSize: "0.68rem" }}>
+            <a
+              key={l.href}
+              href={l.href}
+              className="label link-underline whitespace-nowrap"
+              style={{ fontSize: "0.68rem" }}
+            >
               {l.label}
             </a>
           ))}
           <LanguageToggle />
-          <a href="#rsvp" className="btn" style={{ padding: "0.7rem 1.5rem" }}>
+          <a href="#rsvp" className="btn whitespace-nowrap" style={{ padding: "0.7rem 1.5rem" }}>
             {t.nav.rsvp}
           </a>
         </nav>
 
-        <div className="flex items-center gap-3 md:hidden">
+        <div className="flex items-center gap-3 lg:hidden">
           <LanguageToggle />
           <button
             type="button"
@@ -73,7 +83,7 @@ export default function SiteHeader() {
           slides fully above the viewport (its height + the 64px header offset)
           so it never covers the top bar. */}
       <div
-        className={`md:hidden fixed inset-0 top-16 bg-paper transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`lg:hidden fixed inset-0 top-16 md:top-20 bg-paper transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           open ? "translate-y-0 pointer-events-auto" : "translate-y-[calc(-100%_-_5rem)] pointer-events-none"
         }`}
         style={{ borderTop: "1px solid var(--line-soft)" }}
