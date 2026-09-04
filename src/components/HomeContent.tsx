@@ -70,23 +70,34 @@ export default function HomeContent() {
       <SiteHeader />
       <main id="top">
         {/* HERO */}
-        <section className="relative min-h-[100svh] flex flex-col items-center justify-center text-center overflow-hidden">
-          <Diamond className="pointer-events-none absolute text-gold opacity-[0.06] w-[70vmin] h-[70vmin]" aria-hidden />
-          <div className="shell relative pt-24 pb-16">
-            <h1 className="display leading-[0.92]" style={{ fontSize: "clamp(3.6rem, 15vw, 11rem)" }}>
+        {/* The scroll cue sits in normal flow below the names (not pinned to
+            the section bottom) so it can never collide with the date on short
+            viewports. Type size and vertical gaps also scale with viewport
+            height so a squat window doesn't crowd the stack. */}
+        <section className="relative min-h-[100svh] flex flex-col items-center text-center overflow-hidden">
+          <Diamond
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-gold opacity-[0.06] w-[70vmin] h-[70vmin]"
+            aria-hidden
+          />
+          <div className="shell relative flex-1 flex flex-col items-center justify-center pt-24 pb-6">
+            <h1 className="display leading-[0.92]" style={{ fontSize: "clamp(3.6rem, min(15vw, 17svh), 11rem)" }}>
               <span className="block">Wellon</span>
               <span className="display-italic block text-gold my-1 md:my-2" style={{ fontSize: "0.62em" }}>
                 &amp;
               </span>
               <span className="block">Vivian</span>
             </h1>
-            <div className="mt-12 flex flex-col items-center gap-5">
+            <div className="mt-[clamp(1.75rem,5svh,3rem)] flex flex-col items-center gap-[clamp(0.75rem,2svh,1.25rem)]">
               <hr className="rule-gold w-16" />
               <p className="label">{t.hero.marrying}</p>
               <p className="font-display italic text-taupe text-xl md:text-2xl">{dateLabel}</p>
             </div>
           </div>
-          <a href="#invitation" className="absolute bottom-8 flex flex-col items-center gap-2 text-taupe" aria-label={t.hero.scroll}>
+          <a
+            href="#invitation"
+            className="relative flex flex-col items-center gap-2 pt-6 pb-8 text-taupe"
+            aria-label={t.hero.scroll}
+          >
             <span className="label" style={{ fontSize: "0.6rem" }}>
               {t.hero.scroll}
             </span>
@@ -204,7 +215,7 @@ export default function HomeContent() {
                 {t.details.headingLead}
                 <span className="display-italic text-gold">{t.details.headingAccent}</span>
               </h2>
-              <p className="lede mt-6 max-w-xl mx-auto">{t.details.intro}</p>
+              <p className="lede mt-6 max-w-4xl mx-auto text-balance">{t.details.intro}</p>
             </Reveal>
 
             <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-x-16">
@@ -318,9 +329,6 @@ export default function HomeContent() {
               </a>
             ))}
           </div>
-          <p className="mt-10 text-[var(--on-ink-soft)]" style={{ fontSize: "0.72rem", opacity: 0.7 }}>
-            {t.footer.made}
-          </p>
         </div>
       </footer>
     </>

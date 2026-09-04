@@ -49,7 +49,7 @@ const en = {
   gallery: {
     headingLead: "The ",
     headingAccent: "photographs",
-    intro: "From our pre-wedding days in Paris — the Louvre, Chantilly, and the Seine.",
+    intro: "From our pre-wedding days in Paris — the Louvre, Château de Chantilly, the Eiffel Tower, and Pont Alexandre III.",
     photoAdd: "Photo to be added",
     photos: [
       "At the pyramid",
@@ -83,7 +83,7 @@ const en = {
     dress: "Dress code",
     dressSub: "We can’t wait to see you at your finest",
     theDay: "The day",
-    theDayValue: "Ceremony, dinner & dancing",
+    theDayValue: "Ceremony & dinner",
     theDaySub: "A full schedule to follow",
     viewMap: "View map",
     saveTheDate: "Save the date",
@@ -114,7 +114,6 @@ const en = {
   },
   footer: {
     withLove: "With love — we can’t wait to celebrate with you.",
-    made: "Made with love",
   },
   calendar: {
     add: "Add to calendar",
@@ -163,7 +162,7 @@ const zh: typeof en = {
   gallery: {
     headingLead: "",
     headingAccent: "照片集",
-    intro: "我们在巴黎拍下的婚纱照——卢浮宫、香缇伊城堡与塞纳河畔。",
+    intro: "我们在巴黎拍下的婚纱照——卢浮宫、尚蒂依城堡、巴黎埃菲尔铁塔与亚历山大三世桥。",
     photoAdd: "照片待上传",
     photos: [
       "金字塔前",
@@ -197,7 +196,7 @@ const zh: typeof en = {
     dress: "着装要求",
     dressSub: "期待看到盛装出席的您",
     theDay: "当天安排",
-    theDayValue: "仪式、晚宴与舞会",
+    theDayValue: "仪式与晚宴",
     theDaySub: "完整流程稍后公布",
     viewMap: "查看地图",
     saveTheDate: "存入日历",
@@ -227,7 +226,6 @@ const zh: typeof en = {
   },
   footer: {
     withLove: "满怀爱意——期待与您共同庆祝。",
-    made: "用心制作",
   },
   calendar: {
     add: "加入日历",
